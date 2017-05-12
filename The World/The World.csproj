@@ -7,6 +7,18 @@
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot/images\favcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\images\favcon_X6D_icon.ico" />
+    <Content Include="wwwroot\images\favicon.ico" />
+    <Content Include="wwwroot\images\profile.jpg" />
+    <Content Include="wwwroot\images\user1.jpg" />
+    <Content Include="wwwroot\img\profile.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore" Version="1.1.1" />
