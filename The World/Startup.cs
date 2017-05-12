@@ -7,26 +7,41 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using TheWorld.Services;
 
 namespace The_World
 {
     public class Startup
     {
+
+        public IConfigurationRoot Configuration { get; }
+        public IHostingEnvironment Env;
+
         public Startup(IHostingEnvironment env)
         {
+            Env = env;
+
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(Env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile($"appsettings.{Env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
-        public IConfigurationRoot Configuration { get; }
-
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(Configuration);
+
+            if (Env.IsEnvironment("Development") || Env.IsEnvironment("Testing"))
+            {
+                services.AddScoped<IMailService, DebugMailService>();
+            }
+            else
+            {
+                // Implement a real Mail Service
+            }
             // Add framework services.
             services.AddMvc();
         }
@@ -44,7 +59,8 @@ namespace The_World
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //Implement real mail service
+                //app.UseExceptionHandler("/Home/Error");
             }
 
             app.UseStaticFiles();
@@ -53,7 +69,9 @@ namespace The_World
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "App", action = "Index" }
+                    );
             });
         }
     }

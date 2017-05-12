@@ -1,0 +1,9 @@
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\bin\Debug\netcoreapp1.1\The World.deps.json
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\bin\Debug\netcoreapp1.1\The World.runtimeconfig.json
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\bin\Debug\netcoreapp1.1\The World.runtimeconfig.dev.json
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\bin\Debug\netcoreapp1.1\The World.dll
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\bin\Debug\netcoreapp1.1\The World.pdb
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\obj\Debug\netcoreapp1.1\The World.csprojResolveAssemblyReference.cache
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\obj\Debug\netcoreapp1.1\The World.AssemblyInfo.cs
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\obj\Debug\netcoreapp1.1\The World.dll
+C:\Users\Kyle\OneDrive\Development\Web Development\.NET Core\pluralSightAspCoreMVC6EnityFrameworkAngular\The World\obj\Debug\netcoreapp1.1\The World.pdb

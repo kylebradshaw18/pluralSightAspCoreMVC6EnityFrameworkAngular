@@ -1,37 +1,91 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/* site.css */
+/*body {
+  font-family: sans-serif;
+  font-size: 14px;
+  margin: 0;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+label {
+  font-weight: bold;
+  display: block;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+input[type=text], input[type=password], textarea {
+  width: 150px;
+}*/
+
+/*#main {
+  background-color: #eee;
+  padding: 4px;
+  margin: 0;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+#footer {
+  background-color: #222;
+  color: #eee;
+  padding: 8px 5px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}*/
+
+.headshot {
+  max-width: 50px;
+  border: 1px solid #222;
+  padding: 3px;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.menu {
+  font-size: 12px;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+  .menu li {
+    list-style-type: none;
+  }
+
+    .menu li.active {
+      font-weight: bold;
     }
+
+    .menu li a {
+      color: #eee;
+    }
+
+#sidebar {
+  background: #2a2c36;
+  color: #eee;
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  overflow: hidden;
+  left: 0;
+  margin: 0;
+  -moz-transition: left ease .25s;
+  -o-transition: left ease .25s;
+  -webkit-transition: left ease .25s;
+  transition: left ease .25s;
 }
+
+  #sidebar.hide-sidebar {
+    left: -250px;
+    -moz-transition: left ease .25s;
+    -o-transition: left ease .25s;
+    -webkit-transition: left ease .25s;
+    transition: left ease .25s;
+  }
+
+#wrapper {
+  margin: 0 0 0 250px;
+  -moz-transition: margin-left ease .25s;
+  -o-transition: margin-left ease .25s;
+  -webkit-transition: margin-left ease .25s;
+  transition: margin-left ease .25s;
+}
+
+  #wrapper.hide-sidebar {
+    margin-left: 0;
+    -moz-transition: margin-left ease .25s;
+    -o-transition: margin-left ease .25s;
+    -webkit-transition: margin-left ease .25s;
+    transition: margin-left ease .25s;
+  }
