@@ -12,7 +12,7 @@ namespace TheWorld.Models
 		public IConfigurationRoot _config;
 
 		public WorldContext(IConfigurationRoot config, DbContextOptions options) 
-			: base()
+			: base(options)
 		{
 			_config = config;
 		}
