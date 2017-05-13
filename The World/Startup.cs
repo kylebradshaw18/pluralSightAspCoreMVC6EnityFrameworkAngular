@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheWorld.Services;
 using TheWorld.Models;
+using Newtonsoft.Json.Serialization;
+using TheWorld.ViewModels;
+using AutoMapper;
 
 namespace The_World
 {
@@ -54,13 +57,21 @@ namespace The_World
 			services.AddLogging();
 
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+				.AddJsonOptions(config =>
+				{
+					config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+				});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder)
         {
-            //loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+			Mapper.Initialize(config =>
+			{
+				config.CreateMap<TripViewModel, Trip>().ReverseMap();
+			});
 
             if (env.IsEnvironment("Development"))
             {
