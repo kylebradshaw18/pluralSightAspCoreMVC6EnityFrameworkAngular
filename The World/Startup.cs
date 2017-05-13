@@ -25,6 +25,7 @@ namespace The_World
                 .SetBasePath(Env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{Env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
