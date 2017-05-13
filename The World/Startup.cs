@@ -12,6 +12,8 @@ using TheWorld.Models;
 using Newtonsoft.Json.Serialization;
 using TheWorld.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace The_World
 {
@@ -48,6 +50,15 @@ namespace The_World
                 // Implement a real Mail Service
             }
 
+			services.AddIdentity<WorldUser, IdentityRole>(config =>
+			{
+				config.User.RequireUniqueEmail = true;
+				config.Password.RequiredLength = 8;
+				/*Default go to login when the user is not logged in*/
+				config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
+			})
+				.AddEntityFrameworkStores<WorldContext>();
+
 			services.AddDbContext<WorldContext>();
 
 			services.AddScoped<IWorldRepository, WorldRepository>();
@@ -59,9 +70,15 @@ namespace The_World
 			services.AddLogging();
 
             // Add framework services.
-            services.AddMvc()
-				.AddJsonOptions(config =>
+            services.AddMvc(config =>
 				{
+					if (Env.IsProduction()) //On production we want to secure user infromation
+					{
+						config.Filters.Add(new RequireHttpsAttribute());
+					}
+				}).AddJsonOptions(config =>
+				{
+					//When returning json we need to camel case the porperties for consistency
 					config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 				});
         }
@@ -69,7 +86,11 @@ namespace The_World
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder)
         {
+			app.UseStaticFiles();
 			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+
+			app.UseIdentity();
+
 			Mapper.Initialize(config =>
 			{
 				config.CreateMap<TripViewModel, Trip>().ReverseMap();
@@ -88,8 +109,6 @@ namespace The_World
 				//app.UseExceptionHandler("/Home/Error");
 				loggerFactory.AddDebug(LogLevel.Error);
 			}
-
-            app.UseStaticFiles();
 
             app.UseMvc(routes =>
             {

@@ -19,27 +19,27 @@ namespace TheWorld.Models
 
 		public async Task EnsureSeedData()
 		{
-
-			if(await _userManager.FindByEmailAsync("kylebradshaw@gmail.com") == null)
+			const string pass = "P@ssw0rd!";
+			var user = new WorldUser()
 			{
-				var user = new WorldUser()
-				{
-					UserName = "kylebradshaw",
-					Email = "kyle.bradshaw@gmail.com"
-				};
+				UserName = "kylebradshaw",
+				Email = "kylebradshaw18@gmail.com"
+			};
 
-				await _userManager.CreateAsync(user, "password");
+			if (await _userManager.FindByEmailAsync(user.Email) == null)
+			{
+				await _userManager.CreateAsync(user, pass);
 			}
 
 
-
+			#region Add Test Data
 			if (!_context.Trips.Any())
 			{
 				var usTrip = new Trip()
 				{
 					DateCreated = DateTime.UtcNow,
 					Name = "US Trip",
-					UserName = "kylebradshaw",
+					UserName = user.UserName,
 					Stops = new List<Stop>()
 					{
 						new Stop() {  Name = "Atlanta, GA", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 },
@@ -60,7 +60,7 @@ namespace TheWorld.Models
 				{
 					DateCreated = DateTime.UtcNow,
 					Name = "World Trip",
-					UserName = "kylebradshaw",
+					UserName = user.UserName,
 					Stops = new List<Stop>()
 					{
 						new Stop() { Order = 0, Latitude =  33.748995, Longitude =  -84.387982, Name = "Atlanta, Georgia", Arrival = DateTime.Parse("Jun 3, 2014") },
@@ -129,5 +129,6 @@ namespace TheWorld.Models
 				await _context.SaveChangesAsync();
 			}
 		}
-    }
+#endregion
+	}
 }
