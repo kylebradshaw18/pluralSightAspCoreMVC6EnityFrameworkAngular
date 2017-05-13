@@ -7,10 +7,12 @@ using TheWorld.Models;
 using TheWorld.ViewModels;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TheWorld.Controllers.Api
 {
 	[Route("api/trips")]
+	[Authorize]
 	public class TripsController : Controller
 	{
 		private IWorldRepository _repository;
@@ -27,7 +29,7 @@ namespace TheWorld.Controllers.Api
 		{
 			try
 			{
-				var results = _repository.GetAllTrips();
+				var results = _repository.GetTripsByUsername(User.Identity.Name);
 				return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
 			}
 			catch (Exception ex)
@@ -44,6 +46,9 @@ namespace TheWorld.Controllers.Api
 			{
 				//Save to the database
 				var newTrip = Mapper.Map<Trip>(theTrip);
+
+				newTrip.UserName = User.Identity.Name;
+
 				_repository.AddTrip(newTrip);
 
 				if (await _repository.SaveChangesAsync())
