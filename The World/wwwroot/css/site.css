@@ -43,7 +43,7 @@ input[type=text], input[type=password], textarea {
     list-style-type: none;
   }
 
-    .menu li.active {
+    .menu .active {
       font-weight: bold;
     }
 

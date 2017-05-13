@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using TheWorld.Services;
+using TheWorld.Models;
 
 namespace The_World
 {
@@ -22,7 +23,7 @@ namespace The_World
             Env = env;
 
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Env.ContentRootPath)
+                .SetBasePath(Env.ContentRootPath + "/Settings/")
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{Env.EnvironmentName}.json", optional: true)
                 .AddJsonFile("config.json")
@@ -43,6 +44,9 @@ namespace The_World
             {
                 // Implement a real Mail Service
             }
+
+			services.AddDbContext<WorldContext>();
+
             // Add framework services.
             services.AddMvc();
         }
