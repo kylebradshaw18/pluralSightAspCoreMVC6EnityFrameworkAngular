@@ -24,6 +24,11 @@
     <Content Include="wwwroot\images\favicon.ico" />
     <Content Include="wwwroot\images\profile.jpg" />
     <Content Include="wwwroot\images\user1.jpg" />
+    <Content Include="wwwroot\js\app-trips.js" />
+    <Content Include="wwwroot\js\Trips\app.js" />
+    <Content Include="wwwroot\js\Trips\tripsApp.js" />
+    <Content Include="wwwroot\js\Trips\tripsController.js" />
+    <Content Include="wwwroot\js\Trips\tripApp.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />
