@@ -26,8 +26,15 @@
     <Content Include="wwwroot\images\user1.jpg" />
     <Content Include="wwwroot\js\simpleControls.js" />
     <Content Include="wwwroot\js\Trips\tripsApp.js" />
+    <Content Include="wwwroot\js\Trips\tripEditorController.js">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
     <Content Include="wwwroot\js\Trips\tripsController.js" />
     <Content Include="wwwroot\views\htmlpage.html" />
+    <Content Include="wwwroot\views\tripEditorView.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="wwwroot\views\tripsView.html" />
     <Content Include="wwwroot\views\waitCursor.html" />
   </ItemGroup>
   <ItemGroup>

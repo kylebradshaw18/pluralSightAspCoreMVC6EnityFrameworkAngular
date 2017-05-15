@@ -1,69 +1,19 @@
-@model IEnumerable<TheWorld.Models.Trip>
 @{
   ViewBag.Title = "Home Page";
 }
 @section Scripts{
+	<script src="~/lib/underscore/underscore-min.js"></script>
 	<script src="~/lib/angular/angular.min.js"></script>
+	<script src="~/lib/angular-route/angular-route.min.js"></script>
+	<script src="~/lib/travelMap/travelmap.min.js"></script>
+	<!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDB5t6h1r74K-1H5FDGZWs3RYuk-2Q2Sfs" type="text/javascript"></script>
+	<script src="~/lib/gmaps/gmaps.min.js"></script>
 	<script src="~/js/simpleControls.js"></script>
 	<script src="~/js/Trips/tripsApp.js"></script>
 	<script src="~/js/Trips/tripsController.js"></script>
+	<script src="~/js/Trips/tripEditorController.js"></script>
 }
 <div class="row" ng-app="tripsApp">
-
-	<div ng-controller="tripsController as vm" class="col-md-6 col-md-offset-3">
-
-		<div class="text-danger" ng-show="vm.errorMessage">{{vm.errorMessage}}</div>
-		<wait-cursor display-when="vm.busy"></wait-cursor>
-
-		<table class="table table-responsive table-striped">
-			<tr ng-repeat="trip in vm.trips">
-				<td>{{ trip.name }}</td>
-				<td>{{ trip.dateCreated | date }}</td>
-			</tr>
-		</table>
-
-		<form novalidate name="newTripForm" ng-submit="vm.addTrip()">
-			<div class="form-group">
-				<label for="name">Trip name</label>
-				<input class="form-control" type="text" placeholder="Trip Name" id="name" name="name" ng-model="vm.newTrip.name" required ng-minlength="5"/>
-				<span ng-show="newTripForm.name.$error.required" class="text-warning">Name is required</span>
-				<span ng-show="newTripForm.name.$error.minlength" class="text-warning">Must be 5 character</span>
-			</div>
-			<div class="form-group">
-				<input class="btn btn-success btn-sm" value="Add" type="submit"
-					   ng-disabled="newTripForm.$invalid"/>
-			</div>
-		</form>
-
-	</div>
-
-
-
-  <div class="col-md-6 col-xs-8">
-    <h1>The World</h1>
-    <p>This will be a fun website soon!</p>
-
-    <form>
-      <div class="form-group">
-        <label>Date</label>
-        <input class="form-control" />
-      </div>
-      <div class="form-group">
-        <label>Location</label>
-        <input class="form-control" />
-      </div>
-      <div><input type="submit" value="Add" class="btn btn-success" /></div>
-    </form>
-  </div>
-
-  <div class="col-md-6">
-    <h2>The Map</h2>
-	<ul>
-	@foreach (var item in Model)
-	{
-		<li>@item.Name : @item.DateCreated.ToString("d")</li>
-	}
-	</ul>
-  </div>
-
+	<div ng-view></div>
 </div>

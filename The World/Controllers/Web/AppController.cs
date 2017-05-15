@@ -36,7 +36,7 @@ namespace TheWorld.Controllers.Web
 		[Authorize]
 		public IActionResult Trips()
 		{
-			try
+			/*try
 			{
 				var data = _repository.GetAllTrips();
 				return View(data);
@@ -45,7 +45,8 @@ namespace TheWorld.Controllers.Web
 			{
 				_logger.LogError($"Failed to get trips : {ex.Message}");
 				return Redirect("/error");
-			}
+			}*/
+			return View();
 		}
 
 		public IActionResult Contact()

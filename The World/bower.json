@@ -9,6 +9,8 @@
     "jquery": "~2.2.4",
     "jquery-validation": "~1.15.0",
     "bootstrap": "~3.3.7",
-    "angular": "v1.6.5-build.5353+sha.136a42a"
+    "angular": "v1.6.5-build.5353+sha.136a42a",
+    "angular-route": "v1.6.5-build.5353+sha.136a42a",
+    "travelMap": "travelmap#1.0.2"
   }
 }
