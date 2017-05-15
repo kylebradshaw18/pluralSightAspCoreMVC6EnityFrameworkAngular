@@ -3,6 +3,6 @@
 
 	"use strict";
 
-	angular.module("tripsApp", []);
+	angular.module("tripsApp", ["simpleControls"]);
 
 })();

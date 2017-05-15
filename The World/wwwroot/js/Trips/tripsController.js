@@ -17,7 +17,6 @@
 
 		$http.get(api).then(function (response) {
 			//Success
-			debugger;
 			angular.copy(response.data, vm.trips);
 		}, function (error) {
 			//Failure
@@ -29,7 +28,6 @@
 		vm.addTrip = function () {
 			vm.busy = true;
 			vm.errorMessage = "";
-			vm.newTrip.DateCreated = new Date();
 			$http.post(api, vm.newTrip).then(function (response) {
 				//success
 				vm.trips.push(response.data);
