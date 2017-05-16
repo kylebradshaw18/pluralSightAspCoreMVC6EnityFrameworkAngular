@@ -30,7 +30,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <Content Include="wwwroot\js\Trips\tripsController.js" />
-    <Content Include="wwwroot\views\htmlpage.html" />
+    <Content Include="wwwroot\views\datePicker.html" />
     <Content Include="wwwroot\views\tripEditorView.html">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

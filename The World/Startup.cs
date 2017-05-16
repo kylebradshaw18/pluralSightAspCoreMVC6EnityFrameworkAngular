@@ -104,17 +104,12 @@ namespace The_World
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder)
         {
-			app.UseStaticFiles();
-			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-
-			app.UseIdentity();
-
 			Mapper.Initialize(config =>
 			{
 				config.CreateMap<TripViewModel, Trip>().ReverseMap();
-				config.CreateMap<StopViewModel, Trip>().ReverseMap();
+				config.CreateMap<StopViewModel, Stop>().ReverseMap();
 			});
-
+			
             if (env.IsEnvironment("Development"))
             {
                 app.UseDeveloperExceptionPage();
@@ -128,7 +123,12 @@ namespace The_World
 				loggerFactory.AddDebug(LogLevel.Error);
 			}
 
-            app.UseMvc(routes =>
+			app.UseStaticFiles();
+			//loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+
+			app.UseIdentity();
+
+			app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",

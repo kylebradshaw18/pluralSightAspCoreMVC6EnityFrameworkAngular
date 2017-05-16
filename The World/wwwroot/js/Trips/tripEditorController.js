@@ -13,6 +13,8 @@
 		vm.tripName = $routeParams.tripName;
 		vm.stops = [];
 		vm.errorMessage = "";
+		vm.newStop = {};
+		vm.newStop.arrival = new Date().toLocaleDateString();
 		vm.isBusy = false;
 		vm.newStop = {};
 
@@ -28,11 +30,21 @@
 
 		vm.addStop = function () {
 			vm.isBusy = true;
+			vm.errorMessage = "";
+			if (Object.prototype.toString.call(vm.newStop.arrival) === "[object Date]") {
+				if (isNaN(vm.newStop.arrival.getTime())) {
+					vm.errorMessage = "Invalid Date";
+				}
+			}
+
+			if (vm.errorMessage.length > 0)
+				return;
+
 			$http.post(api + vm.tripName + "/stops", vm.newStop)
 				.then(function (response) {
 					vm.stops.push(response.data);
 					_showMap(vm.stops);
-					vm.newstop = {};
+					clear();
 				}, function (error) {
 					vm.errorMessage = error;
 				}).finally(function () {
@@ -40,14 +52,17 @@
 				});
 		};
 
+		function clear() {
+			vm.newStop = {};
+			vm.newStop.arrival = new Date().toLocaleDateString();
+		};
 	}
 
 	function _showMap(stops) {
 		if (stops && stops.length > 0) {
-			debugger;
 			let mapStops = _.map(stops, function (item) {
 				return {
-					lat: item.latitude,
+					lat:  item.latitude,
 					long: item.longitude,
 					info: item.name
 				}
@@ -55,12 +70,11 @@
 
 			//Show Map
 			travelMap.createMap({
-				stops: stops,
+				stops: mapStops,
 				selector: "#map",
 				currentStop: 1,
 				initialZoom: 3
 			})
 		}
 	}
-
 })();

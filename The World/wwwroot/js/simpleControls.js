@@ -15,5 +15,4 @@
 			templateUrl:"/views/waitCursor.html"
 		};
 	}
-
 })();
