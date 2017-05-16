@@ -1,7 +1,7 @@
 ﻿// site.js
 (function () {
-  let $sidebarAndWrapper = $("#sidebar,#wrapper");
-  let $icon = $("#sidebarToggle i.fa");
+  var $sidebarAndWrapper = $("#sidebar, #wrapper");
+  var $icon = $("#sidebarToggle i.fa");
 
   $("#sidebarToggle").on("click", function () {
     $sidebarAndWrapper.toggleClass("hide-sidebar");

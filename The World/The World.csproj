@@ -25,6 +25,9 @@
     <Content Include="wwwroot\images\profile.jpg" />
     <Content Include="wwwroot\images\user1.jpg" />
     <Content Include="wwwroot\js\simpleControls.js" />
+    <Content Include="wwwroot\js\tripEditorController.js" />
+    <Content Include="wwwroot\js\tripsApp.js" />
+    <Content Include="wwwroot\js\tripsController.js" />
     <Content Include="wwwroot\js\Trips\tripsApp.js" />
     <Content Include="wwwroot\js\Trips\tripEditorController.js">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
